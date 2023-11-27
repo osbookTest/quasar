@@ -9,7 +9,6 @@
     hide-pagination
   >
     <template v-slot:top-right>
-      {{ (search, orderArr) }}
       <SearchTable v-model:search="search" />
       <OrderSelect v-model:currentOption="orderArr" :options="options1" />
     </template>
@@ -34,6 +33,10 @@ import SearchTable from './Toolbar/SearchTable.vue';
 import OrderSelect from './Toolbar/OrderTable.vue';
 import PaginationTable from './Pagination/PaginationTable.vue';
 import { QA } from './data ';
+
+const props = defineProps<{
+  rows: QA[];
+}>();
 
 const search = ref('');
 const orderArr = ref({ label: '最新', value: 'desc' });
@@ -61,6 +64,7 @@ const initialize = {
 const pagination = ref({
   page: 1,
   rowsPerPage: 3,
+  rowLength: props.rows.length,
 });
 
 //子組件order/search
@@ -103,10 +107,6 @@ const options1 = [
   { label: '資管', value: '1' },
   { label: '圖資', value: '2' },
 ];
-
-const props = defineProps<{
-  rows: QA[];
-}>();
 
 // :loading="true"
 //loading-label="Gimme a sec and I'll fetch ya data!"

@@ -22,6 +22,7 @@ import { computed, ref } from 'vue';
 interface Pagination {
   page: number;
   rowsPerPage: number;
+  rowLength: number;
 }
 const props = defineProps<{
   paginaTable: Pagination;
@@ -29,6 +30,6 @@ const props = defineProps<{
 defineEmits(['update:paginaTable']);
 
 const pagesNumber = computed(() =>
-  Math.ceil(7 / props.paginaTable.rowsPerPage)
+  Math.ceil(props.paginaTable.rowLength / props.paginaTable.rowsPerPage)
 );
 </script>
