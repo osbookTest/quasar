@@ -7,11 +7,10 @@
           @dialogOpen="(value) => (open = value)"
           @setSelectRow="(value) => (selectRow = value)"
         />
+        <DeleteBtn :selectRow="slotProps" />
       </template>
     </Table>
   </div>
-  {{ open }}
-  {{ selectRow }}
 </template>
 
 <script setup lang="ts">
@@ -20,6 +19,7 @@ import Swal from 'sweetalert2';
 import EditDialog from './Components/Table/Dialog/EditDialog.vue';
 import Table from './Components/Table/QaTable.vue';
 import EditBtn from './Components/Table/ActionBtn/EditBtn.vue';
+import DeleteBtn from './Components/Table/ActionBtn/DeleteBtn.vue';
 
 type SelectRow = {
   qa_id: number;

@@ -16,15 +16,6 @@
     <template v-slot:body-cell-actions="props">
       <q-td :props="props">
         <slot name="btnAction" :props="props"></slot>
-
-        <q-btn
-          dense
-          round
-          flat
-          icon="delete"
-          class="q-mx-md"
-          @click="deleteSubmit(props.row.qa_id)"
-        ></q-btn>
       </q-td>
     </template>
     <template #bottom>
@@ -74,14 +65,6 @@ const pagination = ref({
 
 //子組件order/search
 //actionBtn
-const deleteSubmit = (qa_id: number) => {
-  Swal.fire({
-    showConfirmButton: false,
-    title: '刪除成功',
-    icon: 'success',
-    timer: 1200,
-  });
-};
 
 //editPop
 const open = ref(false);
